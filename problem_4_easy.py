@@ -5,7 +5,7 @@
     Write a program to calculate correlation (without any libraries except for math) for two lists X and Y.
     resource : https://corporatefinanceinstitute.com/resources/knowledge/finance/covariance/
 '''
-def mean(arr,n):
+def mean(arr:list,n:int):
     n = len(arr)    
     sum = 0
     for i in range(0,n):
@@ -13,7 +13,7 @@ def mean(arr,n):
     mean = sum / n
     return mean
 
-def solution(arr1,arr2):
+def solution(arr1:list,arr2:list):
     n = len(arr1)    
     sum = 0
     for i in range(0,n):
@@ -22,7 +22,6 @@ def solution(arr1,arr2):
     covariance = sum / n-1
     return covariance
     
-
 if __name__ == "__main__":
     arr1 = [1692,1978,1884,2151,2519]
     arr2 = [68,102,110,112,154]
