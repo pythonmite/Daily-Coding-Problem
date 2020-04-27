@@ -5,26 +5,19 @@
     Write a program to calculate correlation (without any libraries except for math) for two lists X and Y.
     resource : https://corporatefinanceinstitute.com/resources/knowledge/finance/covariance/
 '''
-def mean(arr:list,n:int):
-    n = len(arr)    
-    sum = 0
-    for i in range(0,n):
-        sum += arr[i]
-    mean = sum / n
-    return mean
+def solution(X, Y=None):
+    """ Calculate the covariance matrix for the dataset X """
+    if Y is None:
+        Y = X
+    n_samples = np.shape(X)[0]
+    covariance_matrix = (1 / (n_samples-1)) * (X - X.mean(axis=0)).T.dot(Y - Y.mean(axis=0))
 
-def solution(arr1:list,arr2:list):
-    n = len(arr1)    
-    sum = 0
-    for i in range(0,n):
-        sum +=(arr1[i]- mean(arr1,n)) * (arr2[i]- mean(arr2,n))
-    
-    covariance = sum / n-1
-    return covariance
+    return np.array(covariance_matrix, dtype=float)
     
 if __name__ == "__main__":
-    arr1 = [1692,1978,1884,2151,2519]
-    arr2 = [68,102,110,112,154]
+    import numpy as np
+    arr1 = np.array([1692,1978,1884,2151,2519])
+    arr2 = np.array([68,102,110,112,154])
     answer = solution(arr1,arr2)
     print(answer)
     # >>> 7284.839999999999
